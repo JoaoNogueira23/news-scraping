@@ -1,7 +1,10 @@
 # Web Scraping de sites de notícias sobre futebol
-<img src="https://img.shields.io/badge/PYTHON-blue?style=for-the-badge&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/aws-blue?style=for-the-badge&logo=aws&logoColor=black"/>
-<img src="https://img.shields.io/badge/mysql-blue?style=for-the-badge&logo=mysql&logoColor=white"/>
+<span>
+    <img src="https://img.shields.io/badge/PYTHON-blue?style=for-the-badge&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/aws-blue?style=for-the-badge&logo=aws&logoColor=black"/>
+    <img src="https://img.shields.io/badge/mysql-blue?style=for-the-badge&logo=mysql&logoColor=white"/>
+</span>
+
 
 
 ## Sobre o Projeto
