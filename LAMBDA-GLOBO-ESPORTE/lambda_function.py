@@ -57,19 +57,19 @@ def extract_headline(soup, keywords, site_name, id_site):
     return values_insert
 
     
-def mysql_connection(mysql_password):
+def mysql_connection(args_database):
     try:
         # Configurações de conexão
         config = {
             'user': args_database['mysql_credential'],
-            'password': mysql_password,
+            'password': args_database['mysql_password'],
             'host': args_database['mysql_host'],
             'database': args_database['mysql_database']
         }
 
         conn = mysql.connector.connect(**config)
 
-        cursor = conn.cursor()
+        return conn
     except Exception as err:
         print("Database connection failed!")
 
@@ -91,18 +91,25 @@ def insert_into_tb(conn, cursor, results):
 
 
 def lambda_handler(event, content):
-    site = event['site']
-    url = site['url']
-    site_name = site['site_name']
-    id_site = int(site['id_site'])
-    keywords = event['keywords']
+
+    conn = mysql_connection(mysql_password=args_database['mysql_password'])
+
+    cursor = conn.cursor()
 
     try:
+        site = event['site']
+        url = site['url']
+        site_name = site['site_name']
+        id_site = int(site['id_site'])
+        keywords = event['keywords']
+
         response = requests.get(url, headers=headers)
 
         soup = BeautifulSoup(response.text)
         
         results = extract_headline(soup, keywords, site_name, id_site)
+
+        insert_into_tb(conn, cursor, results)
 
         return {
             'statusCode': 200,
@@ -126,3 +133,7 @@ def lambda_handler(event, content):
             },
             'message': "Error during scraping"
         }
+
+    finally:
+        cursor.close()
+        conn.close()
