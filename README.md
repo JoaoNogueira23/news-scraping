@@ -8,8 +8,8 @@
 
 
 ## Sobre o Projeto
-A ideia é de treinar a utilização dos recursos da AWS com algo que eu e os meus amigos sempreconversamos sobre, <br>
+A ideia é de treinar a utilização dos recursos da AWS com algo que eu e os meus amigos sempre conversamos sobre, <br>
 futebol.
 
-Então, eu desenvolvi um algoritimo que extrai manchetes de sites de notícias a cerca do tema, integrando com um RDS <br>
+Então, eu desenvolvi um algoritimo que extrai manchetes de sites de notícias a cerca do tema <br>
 integrando com um RDS criado na AWS e com a execução das automações via LAMBDA.
